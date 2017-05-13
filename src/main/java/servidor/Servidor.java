@@ -164,7 +164,7 @@ public class Servidor extends Thread {
 				clientesConectados.add(atencion);
 			}
 		} catch (Exception e) {
-			log.append("Fallo la conexión." + System.lineSeparator());
+			log.append("Fallo la conexion." + System.lineSeparator());
 			e.printStackTrace();
 		}
 	}
