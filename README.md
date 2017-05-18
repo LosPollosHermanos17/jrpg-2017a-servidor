@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/LosPollosHermanos17/jrpg-2017a-servidor.svg?branch=master)](https://travis-ci.org/LosPollosHermanos17/jrpg-2017a-servidor)
 # World Of Middle Earth (WOME) - servidor
 
 ## Sobre las personas
@@ -12,12 +13,12 @@
 
 ### Integrantes del equipo
 
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
+* Carlos Tomalino ([Charly87](https://github.com/Charly87))
+* Sergio Amoruso ([sergioamoruso91](https://github.com/sergioamoruso91))
+* Alejandro Brude ([abrude](https://github.com/abrude))
+* Rodrigo Cabral ([CabralRodrigoAriel](https://github.com/CabralRodrigoAriel))
+* Matias Lell ([MatiasLell](https://github.com/MatiasLell))
+* Maximiliano Meneghini ([MeneghiniDaniel](https://github.com/MeneghiniDaniel))
 
 ## Sobre la tecnología
 
