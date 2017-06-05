@@ -96,7 +96,6 @@ public class EscuchaCliente extends Thread {
 					// Si se puede loguear el usuario le envio un mensaje de exito y el paquete personaje con los datos
 					if (Servidor.getConector().loguearUsuario(paqueteUsuario)) {
 						
-						paquetePersonaje = new PaquetePersonaje();
 						paquetePersonaje = Servidor.getConector().getPersonaje(paqueteUsuario);
 						paquetePersonaje.setComando(Comando.INICIOSESION);
 						paquetePersonaje.setMensaje(Paquete.msjExito);
