@@ -287,25 +287,26 @@ public class Conector {
 			Servidor.log.append(" 6: " + result.getInt(7));
 			
 			Map<Integer, PaqueteItem> items = new HashMap<Integer, PaqueteItem>();
-			int indice = 8;
+			int indice = 8; // a partir de esta columna comienzan los valores de la tabla Inventario del personaje
 			Servidor.log.append("Item? " + result.getString(indice));
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < 6; i++) {		
 				PaqueteItem item = new PaqueteItem();
-				Servidor.log.append("Indice: " + result.getInt(indice));
-				if (result.getInt(indice) > 0) {
-					item.setId(result.getInt(indice));
-					item.setBonoAtaque(result.getInt(indice + 1));
-					item.setBonoDefensa(result.getInt(indice + 2));
-					item.setBonoMagia(result.getInt(indice + 3));
-					item.setBonoSalud(result.getInt(indice + 4));
-					item.setBonoEnergia(result.getInt(indice + 5));
-					item.setFuerzaRequerida(result.getInt(indice + 6));
-					item.setDestrezaRequerida(result.getInt(indice + 7));
-					item.setInteligenciaRequerida(result.getInt(indice + 8));
+				Servidor.log.append("Indice: " + result.getInt(indice));				
+				if (result.getInt(indice) > 0) {					
+					item.setNombre(result.getString(indice));
+					item.setId(result.getInt(indice + 1));					
+					item.setBonoAtaque(result.getInt(indice + 2));
+					item.setBonoDefensa(result.getInt(indice + 3));
+					item.setBonoMagia(result.getInt(indice + 4));
+					item.setBonoSalud(result.getInt(indice + 5));
+					item.setBonoEnergia(result.getInt(indice + 6));
+					item.setFuerzaRequerida(result.getInt(indice + 7));
+					item.setDestrezaRequerida(result.getInt(indice + 8));
+					item.setInteligenciaRequerida(result.getInt(indice + 9));
 
 					items.put(item.getId(), item);
 				}
-				indice += 9;
+				indice += 10; // cantidad de columnas del inventario -> se incrementa para obtener los datos del siguiente item en el resultado de la consulta
 			}
 			PaqueteInventario inventario = new PaqueteInventario(idInventario, items);
 			personaje.setInventario(inventario);
@@ -343,19 +344,20 @@ public class Conector {
 			for (int i = 0; i < 20; i++) {
 				PaqueteItem item = new PaqueteItem();
 				if (result.getInt(indice) > 0) {
-					item.setId(result.getInt(indice++));
-					item.setBonoAtaque(result.getInt(indice + 1));
-					item.setBonoDefensa(result.getInt(indice + 2));
-					item.setBonoMagia(result.getInt(indice + 3));
-					item.setBonoSalud(result.getInt(indice + 4));
-					item.setBonoEnergia(result.getInt(indice + 5));
-					item.setFuerzaRequerida(result.getInt(indice + 6));
-					item.setDestrezaRequerida(result.getInt(indice + 7));
-					item.setInteligenciaRequerida(result.getInt(indice + 8));
+					item.setNombre(result.getString(indice++));
+					item.setId(result.getInt(indice + 1));
+					item.setBonoAtaque(result.getInt(indice + 2));
+					item.setBonoDefensa(result.getInt(indice + 3));
+					item.setBonoMagia(result.getInt(indice + 4));
+					item.setBonoSalud(result.getInt(indice + 5));
+					item.setBonoEnergia(result.getInt(indice + 6));
+					item.setFuerzaRequerida(result.getInt(indice + 7));
+					item.setDestrezaRequerida(result.getInt(indice + 8));
+					item.setInteligenciaRequerida(result.getInt(indice + 9));
 
 					items.put(item.getId(), item);
 				}
-				indice += 9;
+				indice += 10;
 			}
 			PaqueteMochila mochila = new PaqueteMochila(idMochila, items);
 			personaje.setMochila(mochila);
