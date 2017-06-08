@@ -14,5 +14,5 @@ notifications:
     on_success: always
     on_failure: always
 before_install:
-  - wget -P $TRAVIS_BUILD_DIR/ http://www.mixturabags.com.ar/juego/jrpg-2017a-dominio.jar
-  - wget -P $TRAVIS_BUILD_DIR/ http://www.mixturabags.com.ar/juego/jrpg-2017a-cliente.jar
+  - wget -P $TRAVIS_BUILD_DIR/ https://github.com/LosPollosHermanos17/jrpg-2017a-dominio/raw/master/jrpg-2017a-dominio.jar
+  - wget -P $TRAVIS_BUILD_DIR/ https://github.com/LosPollosHermanos17/jrpg-2017a-cliente/raw/master/jrpg-2017a-cliente.jar

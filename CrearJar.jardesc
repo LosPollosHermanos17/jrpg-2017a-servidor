@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="jrpg-2017a-servidor/jrpg-2017a-servidor.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/jrpg-2017a-servidor/CrearJar.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/jrpg-2017a-servidor/build.gradle"/>
+        <folder path="/jrpg-2017a-servidor/src"/>
+        <file path="/jrpg-2017a-servidor/.classpath"/>
+        <file path="/jrpg-2017a-servidor/humans.md"/>
+        <javaElement handleIdentifier="=jrpg-2017a-servidor/src\/test\/java"/>
+        <javaElement handleIdentifier="=jrpg-2017a-servidor/src\/test\/resources"/>
+        <file path="/jrpg-2017a-servidor/primeraBase.bd"/>
+        <file path="/jrpg-2017a-servidor/LICENSE.txt"/>
+        <javaElement handleIdentifier="=jrpg-2017a-servidor/src\/main\/resources"/>
+        <file path="/jrpg-2017a-servidor/.travis.yml"/>
+        <javaElement handleIdentifier="=jrpg-2017a-servidor/src\/main\/java"/>
+        <file path="/jrpg-2017a-servidor/.gitignore"/>
+        <file path="/jrpg-2017a-servidor/README.md"/>
+        <file path="/jrpg-2017a-servidor/.project"/>
+    </selectedElements>
+</jardesc>
