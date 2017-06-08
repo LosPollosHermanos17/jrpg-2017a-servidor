@@ -27,8 +27,8 @@ dependencies {
     pmdConf group: 'pmd', name: 'pmd', version: '4.3'
     compile files('gson-2.8.0.jar')
     compile files('sqlite-jdbc-3.15.1.jar')
-    compile files('jrpg-dominio-0.1.jar')
-    compile files('jrpg-cliente-0.1.jar')
+    compile files('jrpg-2017a-dominio.jar')
+    compile files('jrpg-2017a-cliente.jar')
 }
 
 /*buildscript {
