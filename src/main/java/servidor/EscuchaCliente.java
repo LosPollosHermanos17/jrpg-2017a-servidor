@@ -164,11 +164,15 @@ public class EscuchaCliente extends Thread {
 					paqueteBatalla = (PaqueteBatalla) gson.fromJson(cadenaLeida, PaqueteBatalla.class);
 					Servidor.log.append(paqueteBatalla.getId() + " quiere batallar con " + paqueteBatalla.getIdEnemigo() + System.lineSeparator());
 					
+					// Carga los items para dar luego de la batalla					
+					paqueteBatalla.setItems(Servidor.getConector().getItems());
+					
 					//seteo estado de batalla
 					Servidor.getPersonajesConectados().get(paqueteBatalla.getId()).setEstado(Estado.estadoBatalla);
 					Servidor.getPersonajesConectados().get(paqueteBatalla.getIdEnemigo()).setEstado(Estado.estadoBatalla);
 					paqueteBatalla.setMiTurno(true);
 					salida.writeObject(gson.toJson(paqueteBatalla));
+					
 					for(EscuchaCliente conectado : Servidor.getClientesConectados()){
 						if(conectado.getIdPersonaje() == paqueteBatalla.getIdEnemigo()){
 							int aux = paqueteBatalla.getId();
