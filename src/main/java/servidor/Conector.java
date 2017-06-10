@@ -237,13 +237,13 @@ public class Conector {
 			PreparedStatement stActualizarInventario = connect.prepareStatement(
 					"UPDATE inventario SET manos1=?, manos2=?, pie=?, cabeza=?, pecho=?, accesorio=? WHERE idInventario=?");
 
-			List<PaqueteItem> items = new ArrayList(paqueteInventario.getItems().values());
-			stActualizarInventario.setInt(1, items.get(1).getId());
-			stActualizarInventario.setInt(2, items.get(2).getId());
-			stActualizarInventario.setInt(3, items.get(3).getId());
-			stActualizarInventario.setInt(4, items.get(4).getId());
-			stActualizarInventario.setInt(5, items.get(5).getId());
-			stActualizarInventario.setInt(6, items.get(6).getId());
+		
+			stActualizarInventario.setInt(1, paqueteInventario.getItems().get(1).getId());
+			stActualizarInventario.setInt(2, paqueteInventario.getItems().get(2).getId());
+			stActualizarInventario.setInt(3, paqueteInventario.getItems().get(3).getId());
+			stActualizarInventario.setInt(4, paqueteInventario.getItems().get(4).getId());
+			stActualizarInventario.setInt(5, paqueteInventario.getItems().get(5).getId());
+			stActualizarInventario.setInt(6, paqueteInventario.getItems().get(6).getId());
 			stActualizarInventario.setInt(7, paqueteInventario.getId());
 
 			stActualizarInventario.executeUpdate();
@@ -344,10 +344,9 @@ public class Conector {
 						item.setBonoEnergia(result.getInt(indice + 7));
 						item.setFuerzaRequerida(result.getInt(indice + 8));
 						item.setDestrezaRequerida(result.getInt(indice + 9));
-						item.setInteligenciaRequerida(result.getInt(indice + 10));
-
-						items.put(i, item);
+						item.setInteligenciaRequerida(result.getInt(indice + 10));						
 					}
+					items.put(i, item);
 					indice += 13; // Cantidad columnas por item
 				}
 			}
@@ -425,10 +424,9 @@ public class Conector {
 						item.setBonoEnergia(result.getInt(indice + 7));
 						item.setFuerzaRequerida(result.getInt(indice + 8));
 						item.setDestrezaRequerida(result.getInt(indice + 9));
-						item.setInteligenciaRequerida(result.getInt(indice + 10));
-
-						items.put(i, item);
+						item.setInteligenciaRequerida(result.getInt(indice + 10));						
 					}
+					items.put(i, item);
 					indice += 13; // Cantidad columnas por item
 				}
 			}
@@ -455,15 +453,16 @@ public class Conector {
 				PaqueteItem item = new PaqueteItem();
 				item.setId(result.getInt(1));
 				item.setNombre(result.getString(2));
-				item.setTipo(result.getString(12));
-				item.setBonoAtaque(result.getInt(3));
-				item.setBonoDefensa(result.getInt(4));
-				item.setBonoMagia(result.getInt(5));
-				item.setBonoSalud(result.getInt(6));
-				item.setBonoEnergia(result.getInt(7));
-				item.setFuerzaRequerida(result.getInt(8));
-				item.setDestrezaRequerida(result.getInt(9));
-				item.setInteligenciaRequerida(result.getInt(10));
+				item.setIdTipo(result.getInt(3));
+				item.setTipo(result.getString(13));
+				item.setBonoAtaque(result.getInt(4));
+				item.setBonoDefensa(result.getInt(5));
+				item.setBonoMagia(result.getInt(6));
+				item.setBonoSalud(result.getInt(7));
+				item.setBonoEnergia(result.getInt(8));
+				item.setFuerzaRequerida(result.getInt(9));
+				item.setDestrezaRequerida(result.getInt(10));
+				item.setInteligenciaRequerida(result.getInt(11));
 
 				items.add(item);
 			}
