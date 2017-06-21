@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import mensajeria.Paquete;
+import mensajeria.Comando;
 import mensajeria.PaqueteInventario;
 import mensajeria.PaqueteItem;
 import mensajeria.PaqueteMochila;

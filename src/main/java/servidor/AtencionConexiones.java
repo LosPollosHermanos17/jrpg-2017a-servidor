@@ -1,54 +1,29 @@
 package servidor;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.google.gson.Gson;
-
-import cliente.Cliente;
 import estados.Estado;
-import mensajeria.Comando;
-import mensajeria.PaqueteDePersonajes;
+import mensajeria.ComandoConexiones;
 
 public class AtencionConexiones extends Thread {
-	
-	private final Gson gson = new Gson();
-
-	public AtencionConexiones() {
-		
-	}
 
 	public void run() {
 
-		synchronized(this){
+		synchronized (this) {
 			try {
-	
 				while (true) {
-			
 					// Espero a que se conecte alguien
 					wait();
-					
-					// Le reenvio la conexion a todos
-					for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
-						
-						if(conectado.getPaquetePersonaje().getEstado() != Estado.estadoOffline){
-							
-							PaqueteDePersonajes pdp = (PaqueteDePersonajes) new PaqueteDePersonajes(Servidor.getPersonajesConectados()).clone();
-							pdp.setComando(Comando.CONEXION);
-							conectado.getSalida().writeObject(gson.toJson(pdp));	
-							
-							
+					try {
+						// Le reenvio la conexion a todos
+						for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
+							if (conectado.getPaquetePersonaje().getEstado() != Estado.estadoOffline)
+								conectado.enviarComando(new ComandoConexiones(Servidor.getPersonajesConectados()));
 						}
-						
-						
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-					
 				}
-				
-			} catch (Exception e){
-				e.printStackTrace();
+			} catch (InterruptedException e1) {				
+				e1.printStackTrace();
 			}
 		}
 	}
