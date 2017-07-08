@@ -18,23 +18,24 @@ public class ComandoMensajeChat extends Comando implements Serializable {
 		try {
 			if (this.esPrivado) {
 				// Si el cliente está conectado
-				//if (Servidor.getPersonajesConectados().containsKey(this.para)) {
-					// Obtengo el cliente
-					for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
-						if (conectado.getPaquetePersonaje().getNombre().equals(this.para)) {							
-							// Doy aviso al cliente
-							conectado.enviarComando(this);
-						}
+				// if
+				// (Servidor.getPersonajesConectados().containsKey(this.para)) {
+				// Obtengo el cliente
+				for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
+					if (conectado.getPaquetePersonaje().getNombre().equals(this.para)) {
+						// Doy aviso al cliente
+						conectado.enviarComando(this);
 					}
-					// Logueo
-					Servidor.log.append("Mensaje de " + this.desde + " para " + this.para + " : " + this.mensajeChat);
-					
-					//Seteo que el comando fue realizado correctamente
-					this.mensaje = this.msjExito;
-					
-					// Le devuelvo el mensaje al que lo envió
-					cliente.enviarComando(this);
-				//}
+				}
+				// Logueo
+				Servidor.log.append("Mensaje de " + this.desde + " para " + this.para + " : " + this.mensajeChat);
+
+				// Seteo que el comando fue realizado correctamente
+				this.mensaje = this.msjExito;
+
+				// Le devuelvo el mensaje al que lo envió
+				cliente.enviarComando(this);
+				// }
 			} else {
 				// Recorro todos los clientes conectados
 				for (EscuchaCliente conectado : Servidor.getClientesConectados()) {
@@ -47,8 +48,7 @@ public class ComandoMensajeChat extends Comando implements Serializable {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Servidor.log.append("Error recibiendo mensaje de chat: " + e.toString());
 		}
 	}
 }
