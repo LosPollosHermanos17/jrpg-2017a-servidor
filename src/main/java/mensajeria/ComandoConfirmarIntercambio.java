@@ -50,16 +50,15 @@ public class ComandoConfirmarIntercambio extends Comando implements Serializable
 				if (entry.getValue().getId() == idItemPersonajeSolicitado)
 					itemPersonajeSolicitado = entry.getValue();
 			}
-			
-			
+						
 			// Hago el cambio de item en el inventario del solicitante
 			itemPersonajeSolicitado.setOfertado(false);
-			personajeSolicitante.getPaqueteInventario().getItems().replace(itemPersonajeSolicitante.getIdTipo(), itemPersonajeSolicitado);
+			personajeSolicitante.getPaqueteInventario().getItems().put(itemPersonajeSolicitante.getIdTipo(), itemPersonajeSolicitado);
 			personajeSolicitanteActualizado = personajeSolicitante;
 			
 			// Hago el cambio de item en el inventario del solicitado
 			itemPersonajeSolicitante.setOfertado(false);
-			personajeSolicitado.getPaqueteInventario().getItems().replace(itemPersonajeSolicitado.getIdTipo(), itemPersonajeSolicitante);
+			personajeSolicitado.getPaqueteInventario().getItems().put(itemPersonajeSolicitado.getIdTipo(), itemPersonajeSolicitante);
 			personajeSolicitadoActualizado = personajeSolicitado;
 				
 		}
