@@ -35,7 +35,7 @@ public class ComandoOfertarItem extends Comando implements Serializable {
 		for (EscuchaCliente clienteConectado : Servidor.getClientesConectados()) {
 			try {
 				// Evito enviar el comando a mi mismo
-				if (clienteConectado.getPaquetePersonaje().getId() != cliente.getId())
+				if (clienteConectado.getPaquetePersonaje().getId() != cliente.getPaquetePersonaje().getId())
 					clienteConectado.enviarComando(this);
 			} catch (IOException e) {
 				e.printStackTrace();
