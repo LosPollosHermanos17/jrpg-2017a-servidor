@@ -8,8 +8,8 @@ public abstract class Comando implements Serializable, Cloneable {
 	public static String msjExito = "1";
 	public static String msjFracaso = "0";
 	
-	private String mensaje;
-	private String ip;
+	protected String mensaje;
+	protected String ip;
 
 	public Comando() {
 		
