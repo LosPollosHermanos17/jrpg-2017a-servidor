@@ -15,6 +15,8 @@ public class ComandoConfirmarIntercambio extends Comando implements Serializable
 	private int idPersonajeSolicitado;
 	private int idItemPersonajeSolicitante;
 	private int idItemPersonajeSolicitado;
+	private PaquetePersonaje personajeSolicitanteActualizado;
+	private PaquetePersonaje personajeSolicitadoActualizado;
 	
 	@Override
 	public void resolver(EscuchaCliente cliente) {
@@ -42,7 +44,7 @@ public class ComandoConfirmarIntercambio extends Comando implements Serializable
 					itemPersonajeSolicitante = entry.getValue();
 			}
 			
-			// Buso el item del personaje solicitado
+			// Busco el item del personaje solicitado
 			PaqueteItem itemPersonajeSolicitado = null;
 			Map<Integer, PaqueteItem> itemsPersonajeSolicitado = personajeSolicitado.getPaqueteInventario().getItems();
 			for (Entry<Integer, PaqueteItem> entry : itemsPersonajeSolicitado.entrySet()) {
@@ -51,19 +53,16 @@ public class ComandoConfirmarIntercambio extends Comando implements Serializable
 			}
 			
 			
-			// Borro el item del personaje solicitante
-			personajeSolicitante.getPaqueteInventario().getItems().put(itemPersonajeSolicitante.getIdTipo(), new PaqueteItem(-1));
+			// Hago el cambio de item en el inventario del solicitante
+			itemPersonajeSolicitado.setOfertado(false);
+			personajeSolicitante.getPaqueteInventario().getItems().replace(itemPersonajeSolicitante.getIdTipo(), itemPersonajeSolicitado);
+			personajeSolicitanteActualizado = personajeSolicitante;
 			
-			// Borro el item del personaje solicitado
-			personajeSolicitado.getPaqueteInventario().getItems().put(itemPersonajeSolicitado.getIdTipo(), new PaqueteItem(-1));
-			
-			
-			// Asigno el nuevo item al personaje solicitante
-			personajeSolicitante.getPaqueteInventario().getInventario().agregarItem(itemPersonajeSolicitado.getItem());
-			
-			// Asigno el nuevo item al personaje solicitado
-			personajeSolicitante.getPaqueteInventario().getInventario().agregarItem(itemPersonajeSolicitante.getItem());
-	
+			// Hago el cambio de item en el inventario del solicitado
+			itemPersonajeSolicitante.setOfertado(false);
+			personajeSolicitado.getPaqueteInventario().getItems().replace(itemPersonajeSolicitado.getIdTipo(), itemPersonajeSolicitante);
+			personajeSolicitadoActualizado = personajeSolicitado;
+				
 		}
 		
 		// Tengo que avisar a todos los usuarios que se completo el intercambio
